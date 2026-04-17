@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="cs">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Red County Reality | Váš domov v srdci venkova</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Navigace -->
+    <nav>
+        <div class="logo">Red County <span>Reality</span></div>
+        <ul>
+            <li><a href="#o-nas">O nás</a></li>
+            <li><a href="#nabidka">Nabídka nemovitostí</a></li>
+            <li><a href="#prodej">Prodejte nám</a></li>
+        </ul>
+    </nav>
+
+    <!-- Hero Sekce -->
+    <header>
+        <div class="hero-text">
+            <h1>Objevte kouzlo Red County</h1>
+            <p>Najdeme vám domov tam, kde se zastavil klid a začíná příroda.</p>
+        </div>
+    </header>
+
+    <!-- O nás -->
+    <section id="o-nas" class="container">
+        <h2>O nás</h2>
+        <p>Jsme rodinná realitní kancelář působící výhradně ve fiktivním okrese Red County. Známe každý kout od Blueberry po Dillimore. Naším cílem není jen prodat dům, ale najít vám místo, kam se budete rádi vracet.</p>
+    </section>
+
+    <!-- Nabídka nemovitostí -->
+    <section id="nabidka" class="bg-light">
+        <div class="container">
+            <h2>Aktuální nabídka</h2>
+            <div class="grid">
+                <div class="card">
+                    <div class="img-placeholder" style="background: #e67e22; color: white;">Farma u Blueberry</div>
+                    <h3>Historická farma</h3>
+                    <p>Rozlehlé pozemky a výhled na potok. Ideální pro chov dobytka.</p>
+                    <span class="price">4 500 000 RC$</span>
+                </div>
+                <div class="card">
+                    <div class="img-placeholder" style="background: #2980b9; color: white;">Chata v Palomino Creek</div>
+                    <h3>Moderní srub</h3>
+                    <p>Luxusní vybavení přímo u jezera Fisher's Lagoon.</p>
+                    <span class="price">2 800 000 RC$</span>
+                </div>
+                <div class="card">
+                    <div class="img-placeholder" style="background: #27ae60; color: white;">Domek v Montgomery</div>
+                    <h3>Rodinný dům</h3>
+                    <p>Klidná lokalita v blízkosti místního pivovaru a obchodů.</p>
+                    <span class="price">3 200 000 RC$</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Prodejte nám -->
+    <section id="prodej" class="container">
+        <h2>Prodejte nám vaši nemovitost</h2>
+        <p>Chcete prodat svůj dům nebo pozemek v Red County rychle a za férovou cenu? Vyplňte formulář a my se vám ozveme s nabídkou.</p>
+        <form onsubmit="event.preventDefault(); alert('Děkujeme! Poptávka byla (fiktivně) odeslána.');">
+            <input type="text" placeholder="Vaše jméno" required>
+            <input type="email" placeholder="E-mail" required>
+            <textarea placeholder="Popis nemovitosti (lokalita, stav...)" rows="5"></textarea>
+            <button type="submit" class="btn">Odeslat poptávku</button>
+        </form>
+    </section>
+
+    <footer>
+        <p>&copy; 2026 Red County Reality. Všechna práva vyhrazena.</p>
+    </footer>
+
+</body>
+</html>
