@@ -3,77 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red County Reality | Váš domov v srdci venkova</title>
+    <title>Red County Reality | Moderní bydlení na venkově</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
-    <!-- Navigace -->
     <nav>
-        <div class="logo">Red County <span>Reality</span></div>
-        <ul>
-            <li><a href="#o-nas">O nás</a></li>
-            <li><a href="#nabidka">Nabídka nemovitostí</a></li>
-            <li><a href="#prodej">Prodejte nám</a></li>
-        </ul>
+        <div class="logo">RC <span>Reality</span></div>
+        <div class="nav-links">
+            <a href="#o-nas">O nás</a>
+            <a href="#nabidka">Nabídka</a>
+            <a href="#prodej">Prodej</a>
+        </div>
     </nav>
 
-    <!-- Hero Sekce -->
     <header>
-        <div class="hero-text">
-            <h1>Objevte kouzlo Red County</h1>
-            <p>Najdeme vám domov tam, kde se zastavil klid a začíná příroda.</p>
+        <div class="hero-content">
+            <h1>Jednoduchost venkova.<br>Moderní přístup.</h1>
+            <p>Najdeme vám domov v srdci Red County s úctou k tradici a důrazem na detail.</p>
+            <a href="#nabidka" class="btn-primary">Prohlédnout nabídku</a>
         </div>
     </header>
 
-    <!-- O nás -->
-    <section id="o-nas" class="container">
-        <h2>O nás</h2>
-        <p>Jsme rodinná realitní kancelář působící výhradně ve fiktivním okrese Red County. Známe každý kout od Blueberry po Dillimore. Naším cílem není jen prodat dům, ale najít vám místo, kam se budete rádi vracet.</p>
+    <section id="o-nas" class="section">
+        <div class="container-small">
+            <span class="subtitle">Kdo jsme</span>
+            <h2>Váš domov v srdci venkova</h2>
+            <p>V Red County Reality věříme, že nákup nemovitosti by měl být stejně klidný jako život u nás. Kombinujeme hlubokou znalost lokálních tradic od Blueberry po Montgomery s moderními technologiemi prodeje.</p>
+        </div>
     </section>
 
-    <!-- Nabídka nemovitostí -->
-    <section id="nabidka" class="bg-light">
+    <section id="nabidka" class="section bg-light">
         <div class="container">
-            <h2>Aktuální nabídka</h2>
+            <span class="subtitle">Výběr z portfolia</span>
             <div class="grid">
-                <div class="card">
-                    <div class="img-placeholder" style="background: #e67e22; color: white;">Farma u Blueberry</div>
-                    <h3>Historická farma</h3>
-                    <p>Rozlehlé pozemky a výhled na potok. Ideální pro chov dobytka.</p>
-                    <span class="price">4 500 000 RC$</span>
+                <div class="property-card">
+                    <div class="property-img" style="background-color: #e2e8f0;">Farma Blueberry</div>
+                    <div class="property-info">
+                        <h3>Historická usedlost</h3>
+                        <p>Autentická architektura s moderním interiérem.</p>
+                        <div class="price">4 500 000 RC$</div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="img-placeholder" style="background: #2980b9; color: white;">Chata v Palomino Creek</div>
-                    <h3>Moderní srub</h3>
-                    <p>Luxusní vybavení přímo u jezera Fisher's Lagoon.</p>
-                    <span class="price">2 800 000 RC$</span>
+                <div class="property-card">
+                    <div class="property-img" style="background-color: #cbd5e1;">Srub Fisher's Lagoon</div>
+                    <div class="property-info">
+                        <h3>Minimalistický srub</h3>
+                        <p>Čisté linie a nerušený výhled na vodní hladinu.</p>
+                        <div class="price">2 800 000 RC$</div>
+                    </div>
                 </div>
-                <div class="card">
-                    <div class="img-placeholder" style="background: #27ae60; color: white;">Domek v Montgomery</div>
-                    <h3>Rodinný dům</h3>
-                    <p>Klidná lokalita v blízkosti místního pivovaru a obchodů.</p>
-                    <span class="price">3 200 000 RC$</span>
+                <div class="property-card">
+                    <div class="property-img" style="background-color: #94a3b8;">Dům Montgomery</div>
+                    <div class="property-info">
+                        <h3>Rodinná rezidence</h3>
+                        <p>Prostor pro život v nejklidnější části okresu.</p>
+                        <div class="price">3 200 000 RC$</div>
+                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Prodejte nám -->
-    <section id="prodej" class="container">
-        <h2>Prodejte nám vaši nemovitost</h2>
-        <p>Chcete prodat svůj dům nebo pozemek v Red County rychle a za férovou cenu? Vyplňte formulář a my se vám ozveme s nabídkou.</p>
-        <form onsubmit="event.preventDefault(); alert('Děkujeme! Poptávka byla (fiktivně) odeslána.');">
-            <input type="text" placeholder="Vaše jméno" required>
-            <input type="email" placeholder="E-mail" required>
-            <textarea placeholder="Popis nemovitosti (lokalita, stav...)" rows="5"></textarea>
-            <button type="submit" class="btn">Odeslat poptávku</button>
-        </form>
+    <section id="prodej" class="section">
+        <div class="container-small">
+            <span class="subtitle">Spolupráce</span>
+            <h2>Prodejte svou nemovitost</h2>
+            <p>Nabízíme transparentní proces a profesionální prezentaci vašeho majetku.</p>
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Zpráva odeslána.');">
+                <input type="text" placeholder="Jméno a příjmení" required>
+                <input type="email" placeholder="E-mailová adresa" required>
+                <textarea placeholder="Řekněte nám více o vaší nemovitosti" rows="4"></textarea>
+                <button type="submit" class="btn-dark">Odeslat poptávku</button>
+            </form>
+        </div>
     </section>
 
     <footer>
-        <p>&copy; 2026 Red County Reality. Všechna práva vyhrazena.</p>
+        <div class="container">
+            <p>&copy; 2026 Red County Reality. Všechna práva vyhrazena.</p>
+        </div>
     </footer>
 
 </body>
