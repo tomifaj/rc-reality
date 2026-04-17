@@ -3,14 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Red County Reality | Moderní bydlení na venkově</title>
+    <title>Red County Reality | Váš domov v srdci venkova</title>
     <link rel="stylesheet" href="style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <nav>
-        <div class="logo">RC <span>Reality</span></div>
+        <div class="logo-container">
+            <img src="logo.png" alt="Red County Reality Logo" class="main-logo">
+        </div>
         <div class="nav-links">
             <a href="#o-nas">O nás</a>
             <a href="#nabidka">Nabídka</a>
@@ -20,45 +22,49 @@
 
     <header>
         <div class="hero-content">
-            <h1>Jednoduchost venkova.<br>Moderní přístup.</h1>
-            <p>Najdeme vám domov v srdci Red County s úctou k tradici a důrazem na detail.</p>
+            <h1>Váš domov v srdci venkova</h1>
+            <p>Tradiční hodnoty Red County v moderním pojetí realitních služeb.</p>
             <a href="#nabidka" class="btn-primary">Prohlédnout nabídku</a>
         </div>
     </header>
 
     <section id="o-nas" class="section">
         <div class="container-small">
-            <span class="subtitle">Kdo jsme</span>
-            <h2>Váš domov v srdci venkova</h2>
-            <p>V Red County Reality věříme, že nákup nemovitosti by měl být stejně klidný jako život u nás. Kombinujeme hlubokou znalost lokálních tradic od Blueberry po Montgomery s moderními technologiemi prodeje.</p>
+            <span class="subtitle">Tradice a důvěra</span>
+            <h2>Kdo jsme</h2>
+            <p>Jsme specialisté na okres Red County. Naše barvy – hluboká červená, lesní zelená a zemitá hnědá – symbolizují náš vztah k této krajině a jejím obyvatelům.</p>
         </div>
     </section>
 
     <section id="nabidka" class="section bg-light">
-        <div class="container">
-            <span class="subtitle">Výběr z portfolia</span>
-            <div class="grid">
-                <div class="property-card">
-                    <div class="property-img" style="background-color: #e2e8f0;">Farma Blueberry</div>
-                    <div class="property-info">
-                        <h3>Historická usedlost</h3>
-                        <p>Autentická architektura s moderním interiérem.</p>
+        <div class="container-medium">
+            <span class="subtitle">Aktuální portfolio</span>
+            <h2>Nemovitosti v nabídce</h2>
+            
+            <div class="vertical-list">
+                <div class="property-item">
+                    <div class="property-image-placeholder">Farma Blueberry</div>
+                    <div class="property-details">
+                        <h3>Historická usedlost u potoka</h3>
+                        <p>Rozlehlé pozemky, původní zdivo a modernizované hospodářské budovy v srdci Blueberry.</p>
                         <div class="price">4 500 000 RC$</div>
                     </div>
                 </div>
-                <div class="property-card">
-                    <div class="property-img" style="background-color: #cbd5e1;">Srub Fisher's Lagoon</div>
-                    <div class="property-info">
-                        <h3>Minimalistický srub</h3>
-                        <p>Čisté linie a nerušený výhled na vodní hladinu.</p>
+
+                <div class="property-item">
+                    <div class="property-image-placeholder">Srub Palomino</div>
+                    <div class="property-details">
+                        <h3>Minimalistický srub u jezera</h3>
+                        <p>Unikátní výhled na Fisher's Lagoon, soukromé molo a interiér z cedrového dřeva.</p>
                         <div class="price">2 800 000 RC$</div>
                     </div>
                 </div>
-                <div class="property-card">
-                    <div class="property-img" style="background-color: #94a3b8;">Dům Montgomery</div>
-                    <div class="property-info">
-                        <h3>Rodinná rezidence</h3>
-                        <p>Prostor pro život v nejklidnější části okresu.</p>
+
+                <div class="property-item">
+                    <div class="property-image-placeholder">Dům Montgomery</div>
+                    <div class="property-details">
+                        <h3>Rodinná rezidence s ovocným sadem</h3>
+                        <p>Klidné bydlení na okraji Montgomery s vlastní studnou a rozlehlou zahradou.</p>
                         <div class="price">3 200 000 RC$</div>
                     </div>
                 </div>
@@ -69,13 +75,12 @@
     <section id="prodej" class="section">
         <div class="container-small">
             <span class="subtitle">Spolupráce</span>
-            <h2>Prodejte svou nemovitost</h2>
-            <p>Nabízíme transparentní proces a profesionální prezentaci vašeho majetku.</p>
+            <h2>Svěřte nám svou nemovitost</h2>
             <form class="contact-form" onsubmit="event.preventDefault(); alert('Zpráva odeslána.');">
-                <input type="text" placeholder="Jméno a příjmení" required>
-                <input type="email" placeholder="E-mailová adresa" required>
-                <textarea placeholder="Řekněte nám více o vaší nemovitosti" rows="4"></textarea>
-                <button type="submit" class="btn-dark">Odeslat poptávku</button>
+                <input type="text" placeholder="Vaše jméno" required>
+                <input type="email" placeholder="Váš e-mail" required>
+                <textarea placeholder="Popište vaši nemovitost v Red County..." rows="4"></textarea>
+                <button type="submit" class="btn-submit">Odeslat poptávku</button>
             </form>
         </div>
     </section>
