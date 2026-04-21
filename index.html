@@ -37,7 +37,6 @@
 </section>
 
 <style>
-    /* Základní definice barev (pokud již nejsou v CSS) */
     :root {
         --primary-red: #852a26;
         --primary-green: #3d6a36;
@@ -111,6 +110,7 @@
         background: #fdfcf9;
         padding: 15px;
         border-radius: 6px;
+        border: 1px solid #eee;
     }
 
     .detail-label {
@@ -121,12 +121,12 @@
         display: block;
     }
 
-    /* Sekce Poznámka */
-    .property-note {
-        margin: 15px 0;
-        padding: 10px;
-        border-left: 3px solid var(--primary-red);
-        background: #fff9f9;
+    /* Poznámka integrovaná do gridu */
+    .detail-note {
+        grid-column: 1 / -1; /* Zaručí roztažení přes celou šířku boxu */
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #e0ddd5;
         font-style: italic;
     }
 
@@ -188,7 +188,6 @@
             card.className = 'property-card';
             card.onclick = function() { this.classList.toggle('active'); };
 
-            // Příprava galerie
             let galleryHtml = p.gallery.map(img => `<img src="${img}" class="gallery-img" alt="Detail">`).join('');
 
             card.innerHTML = `
@@ -206,15 +205,16 @@
                         <div><span class="detail-label">Plocha</span>${p.size}</div>
                         <div><span class="detail-label">Pokoje</span>${p.rooms}</div>
                         <div><span class="detail-label">Garáž</span>${p.garage}</div>
+                        <div class="detail-note">
+                            <span class="detail-label">Poznámka makléře</span>
+                            ${p.note}
+                        </div>
                     </div>
 
                     <div class="detail-label">Další fotografie</div>
                     <div class="property-gallery">
                         ${galleryHtml}
                     </div>
-
-                    <div class="detail-label">Poznámka makléře</div>
-                    <div class="property-note">${p.note}</div>
 
                     <div class="map-placeholder">[ Mapa: ${p.location} ]</div>
                 </div>
@@ -224,7 +224,7 @@
     }
 
     document.addEventListener('DOMContentLoaded', renderProperties);
-</script> 
+</script>
         
     <section id="nabidka" class="section">
         <div class="container">
