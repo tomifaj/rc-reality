@@ -60,6 +60,7 @@
 
     .property-card:hover {
         border-color: var(--primary-green);
+        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .property-basic {
@@ -102,9 +103,10 @@
         display: block;
     }
 
+    /* Mřížka rozdělena na 3 sloupce */
     .detail-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+        grid-template-columns: repeat(3, 1fr);
         gap: 15px;
         margin: 15px 0;
         background: #fdfcf9;
@@ -113,118 +115,21 @@
         border: 1px solid #eee;
     }
 
+    .detail-item {
+        display: flex;
+        flex-direction: column;
+    }
+
     .detail-label {
         font-weight: bold;
         color: #777;
         font-size: 0.8rem;
         text-transform: uppercase;
-        display: block;
+        margin-bottom: 3px;
     }
 
-    /* Poznámka integrovaná do gridu */
-    .detail-note {
-        grid-column: 1 / -1; /* Zaručí roztažení přes celou šířku boxu */
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px solid #e0ddd5;
-        font-style: italic;
-    }
-
-    /* Galerie fotek */
-    .property-gallery {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-        padding: 10px 0;
-        margin-bottom: 15px;
-    }
-
-    .gallery-img {
-        width: 150px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 4px;
-        flex-shrink: 0;
-        border: 1px solid #eee;
-    }
-
-    .map-placeholder {
-        width: 100%;
-        height: 150px;
-        background-color: #e5e3df;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
-        color: #777;
-    }
-</style>
-
-<script>
-    const propertiesData = [
-        {
-            title: "Ranč 'Redwood' se stájemi",
-            price: "8 900 000 Kč",
-            type: "Zemědělská usedlost",
-            size: "1200 m²",
-            rooms: "8+2",
-            garage: "Ano (4 vozy)",
-            note: "Tato nemovitost je ideální pro chov koní. Součástí prodeje je i přilehlý pastvinový pozemek o rozloze 2 hektary.",
-            image: "https://via.placeholder.com/400x300?text=Hlavni+Foto",
-            gallery: [
-                "https://via.placeholder.com/400x300?text=Staje",
-                "https://via.placeholder.com/400x300?text=Interier",
-                "https://via.placeholder.com/400x300?text=Zahrada"
-            ],
-            location: "North Rock, Red County"
-        }
-    ];
-
-    function renderProperties() {
-        const container = document.getElementById('property-list');
-        
-        propertiesData.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'property-card';
-            card.onclick = function() { this.classList.toggle('active'); };
-
-            let galleryHtml = p.gallery.map(img => `<img src="${img}" class="gallery-img" alt="Detail">`).join('');
-
-            card.innerHTML = `
-                <div class="property-basic">
-                    <img src="${p.image}" class="property-img-small">
-                    <div class="property-info-basic">
-                        <h3 class="property-title">${p.title}</h3>
-                        <div class="property-price">${p.price}</div>
-                    </div>
-                    <span>▼</span>
-                </div>
-                <div class="property-details">
-                    <div class="detail-grid">
-                        <div><span class="detail-label">Typ</span>${p.type}</div>
-                        <div><span class="detail-label">Plocha</span>${p.size}</div>
-                        <div><span class="detail-label">Pokoje</span>${p.rooms}</div>
-                        <div><span class="detail-label">Garáž</span>${p.garage}</div>
-                        <div class="detail-note">
-                            <span class="detail-label">Poznámka makléře</span>
-                            ${p.note}
-                        </div>
-                    </div>
-
-                    <div class="detail-label">Další fotografie</div>
-                    <div class="property-gallery">
-                        ${galleryHtml}
-                    </div>
-
-                    <div class="map-placeholder">[ Mapa: ${p.location} ]</div>
-                </div>
-            `;
-            container.appendChild(card);
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', renderProperties);
-</script>
+    /* Poznámka zabírající 2 sloupce vedle garáže */
+    .detail-note
         
     <section id="nabidka" class="section">
         <div class="container">
