@@ -4,16 +4,187 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Red County Reality | Oficiální stránka</title>
-    <link rel="stylesheet" href="style.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        /* Původní styly stránky */
+        body { font-family: 'Inter', sans-serif; margin: 0; padding: 0; background-color: #fcfaf2; }
+        .hero { text-align: center; padding: 40px 20px; background: white; }
+        .logo-wrapper img { max-width: 200px; height: auto; }
+        .main-nav ul { list-style: none; padding: 0; display: flex; justify-content: center; gap: 20px; }
+        .main-nav a { text-decoration: none; color: #852a26; font-weight: bold; }
+        .section { padding: 40px 20px; max-width: 1000px; margin: 0 auto; }
+        .section-title { color: #3d6a36; border-bottom: 2px solid #852a26; display: inline-block; margin-bottom: 20px; }
+
+        /* Styly pro nabídku nemovitostí */
+        :root {
+            --primary-red: #852a26;
+            --primary-green: #3d6a36;
+        }
+
+        .property-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            width: 100%;
+        }
+
+        .property-card {
+            background: #fff;
+            border: 1px solid #e0ddd5;
+            border-radius: 8px;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .property-card:hover {
+            border-color: var(--primary-green);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .property-basic {
+            display: flex;
+            align-items: center;
+            padding: 15px;
+            gap: 20px;
+            cursor: pointer;
+        }
+
+        .property-img-small {
+            width: 120px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 4px;
+            cursor: zoom-in;
+        }
+
+        .property-info-basic {
+            flex-grow: 1;
+        }
+
+        .property-title {
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            margin: 0;
+        }
+
+        .property-price {
+            color: var(--primary-green);
+            font-weight: bold;
+        }
+
+        .property-details {
+            display: none;
+            padding: 0 20px 20px 20px;
+            border-top: 1px dashed #ccc;
+        }
+
+        .property-card.active .property-details {
+            display: block;
+        }
+
+        .detail-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin: 15px 0;
+            background: #fdfcf9;
+            padding: 15px;
+            border-radius: 6px;
+            border: 1px solid #eee;
+        }
+
+        .detail-label {
+            font-weight: bold;
+            color: #777;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            display: block;
+        }
+
+        .detail-note {
+            grid-column: 1 / -1;
+            margin-top: 10px;
+            padding-top: 10px;
+            border-top: 1px solid #e0ddd5;
+            font-style: italic;
+        }
+
+        .property-gallery {
+            display: flex;
+            gap: 10px;
+            overflow-x: auto;
+            padding: 10px 0;
+            margin-bottom: 15px;
+        }
+
+        .gallery-img {
+            width: 150px;
+            height: 100px;
+            object-fit: cover;
+            border-radius: 4px;
+            flex-shrink: 0;
+            border: 1px solid #eee;
+            cursor: zoom-in;
+        }
+
+        .map-placeholder {
+            width: 100%;
+            height: 150px;
+            background-color: #e5e3df;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 6px;
+            color: #777;
+        }
+
+        /* STYLY PRO LIGHTBOX (Zvětšení obrázku) */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            padding-top: 50px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0,0,0,0.9);
+            overflow: auto;
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 1000px;
+            border-radius: 4px;
+            animation: zoom 0.3s;
+        }
+
+        @keyframes zoom {
+            from {transform:scale(0.7); opacity: 0;} 
+            to {transform:scale(1); opacity: 1;}
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        footer { text-align: center; padding: 20px; background: #eee; margin-top: 40px; }
+    </style>
 </head>
 <body>
 
     <header class="hero">
         <div class="logo-wrapper">
-            <img src="Gemini_Generated_Image_3zfz973zfz973zfz.png" alt="Red County Reality logo" class="center-logo">
+            <img src="Gemini_Generated_Image_3zfz973zfz973zfz.png" alt="Red County Reality logo">
         </div>
-        
         <nav class="main-nav">
             <ul>
                 <li><a href="#domu">DOMŮ</a></li>
@@ -27,299 +198,119 @@
     <section id="o-nas" class="section">
         <div class="container">
             <h2 class="section-title">O nás</h2>
-            <h3>Naše realitní kancelář se Vám nabídne pomoc při výběru nebo prodeji realit v celém Red County a okolí. Založena Robertem Watkinsem. Sídlíme v Palomino Creek, přijďte k nám nebo nás kontaktujte níže!</h3>
+            <p>Naše realitní kancelář se Vám nabídne pomoc při výběru nebo prodeji realit v celém Red County a okolí. Založena Robertem Watkinsem. Sídlíme v Palomino Creek, přijďte k nám nebo nás kontaktujte níže!</p>
         </div>
+    </section>
 
-        
-<section id="nabidka" class="section">
-    <h2 class="section-title">Aktuální nabídka</h2>
-    <div id="property-list" class="property-list">
-        </div>
-</section>
+    <section id="nabidka" class="section">
+        <h2 class="section-title">Aktuální nabídka</h2>
+        <div id="property-list" class="property-list"></div>
+    </section>
 
-<style>
-    :root {
-        --primary-red: #852a26;
-        --primary-green: #3d6a36;
-    }
-
-    .property-list {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-    }
-
-    .property-card {
-        background: #fff;
-        border: 1px solid #e0ddd5;
-        border-radius: 8px;
-        overflow: hidden;
-        /* cursor: pointer; */ /* Odstraněno, aby se zabránilo konfliktu s kliknutím na obrázek */
-        transition: all 0.3s ease;
-    }
-
-    .property-card:hover {
-        border-color: var(--primary-green);
-    }
-
-    .property-basic {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        gap: 20px;
-        cursor: pointer; /* Přidáno, aby se detail rozbalil jen po kliknutí na základní informace */
-    }
-
-    .property-img-small {
-        width: 120px;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 4px;
-        cursor: pointer; /* Ukazatel pro kliknutí k zvětšení */
-    }
-
-    .property-info-basic {
-        flex-grow: 1;
-    }
-
-    .property-title {
-        color: var(--primary-red);
-        font-size: 1.2rem;
-        margin: 0;
-    }
-
-    .property-price {
-        color: var(--primary-green);
-        font-weight: bold;
-    }
-
-    /* ROZBALENÝ DETAIL */
-    .property-details {
-        display: none;
-        padding: 0 20px 20px 20px;
-        border-top: 1px dashed #ccc;
-    }
-
-    .property-card.active .property-details {
-        display: block;
-    }
-
-    .detail-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-        gap: 15px;
-        margin: 15px 0;
-        background: #fdfcf9;
-        padding: 15px;
-        border-radius: 6px;
-        border: 1px solid #eee;
-    }
-
-    .detail-label {
-        font-weight: bold;
-        color: #777;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        display: block;
-    }
-
-    /* Poznámka integrovaná do gridu */
-    .detail-note {
-        grid-column: 1 / -1; /* Zaručí roztažení přes celou šířku boxu */
-        margin-top: 10px;
-        padding-top: 10px;
-        border-top: 1px solid #e0ddd5;
-        font-style: italic;
-    }
-
-    /* Galerie fotek */
-    .property-gallery {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-        padding: 10px 0;
-        margin-bottom: 15px;
-    }
-
-    .gallery-img {
-        width: 150px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 4px;
-        flex-shrink: 0;
-        border: 1px solid #eee;
-        cursor: pointer; /* Ukazatel pro kliknutí k zvětšení */
-    }
-
-    .map-placeholder {
-        width: 100%;
-        height: 150px;
-        background-color: #e5e3df;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
-        color: #777;
-    }
-
-    /* STYLY PRO MODÁLNÍ OKNO (LIGHTBOX) */
-    .modal {
-        display: none; /* Skryté ve výchozím nastavení */
-        position: fixed;
-        z-index: 1000; /* Zobrazeno nad vším ostatním */
-        padding-top: 100px;
-        left: 0;
-        top: 0;
-        width: 100%;
-        height: 100%;
-        overflow: auto; /* Povolit posun, pokud je obrázek příliš velký */
-        background-color: rgba(0,0,0,0.8); /* Černé pozadí s průhledností */
-    }
-
-    .modal-content {
-        margin: auto;
-        display: block;
-        width: 80%;
-        max-width: 900px;
-        animation-name: zoom;
-        animation-duration: 0.4s;
-    }
-
-    @keyframes zoom {
-        from {transform:scale(0)} 
-        to {transform:scale(1)}
-    }
-
-    .close {
-        position: absolute;
-        top: 15px;
-        right: 35px;
-        color: #fff;
-        font-size: 40px;
-        font-weight: bold;
-        transition: 0.3s;
-        cursor: pointer;
-    }
-
-    .close:hover,
-    .close:focus {
-        color: #bbb;
-        text-decoration: none;
-        cursor: pointer;
-    }
-</style>
-
-<script>
-    const propertiesData = [
-        {
-            title: "Karavan v osadě mezi Montgomery a Blueberry",
-            price: "500 000 Kč",
-            type: "Karavan",
-            size: "25 m²",
-            rooms: "2+kk",
-            garage: "Místo před karavanem na 1 auto",
-            note: "Ideální místo pro levné bydlení v srdci Red County",
-            image: "Karavan interiér.png",
-            gallery: [
-                "Karavan interiér.png",
-                "https://via.placeholder.com/400x300?text=Interier",
-                "https://via.placeholder.com/400x300?text=Zahrada"
-            ],
-            location: "North Rock, Red County"
-        },
-        {
-            title: "Tradiční statek v Blueberry",
-            price: "5 400 000 Kč",
-            type: "Venkovské stavení",
-            size: "350 m²",
-            rooms: "5+1",
-            garage: "Ne (velká stodola)",
-            note: "Historický statek s uzavřeným dvorem. Nutná částečná rekonstrukce interiéru. Výborná dostupnost do centra obce a klidné okolí.",
-            image: "https://via.placeholder.com/400x300?text=Statek+Blueberry",
-            gallery: [
-                "https://via.placeholder.com/400x300?text=Dvur",
-                "https://via.placeholder.com/400x300?text=Svetnice",
-                "https://via.placeholder.com/400x300?text=Puda"
-            ],
-            location: "Blueberry, Red County"
-        }
-    ];
-
-function renderProperties() {
-        const container = document.getElementById('property-list');
-        
-        propertiesData.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'property-card';
-            // card.onclick = function() { this.classList.toggle('active'); }; // Odstraněno, aby se detail nerozbalil po kliknutí na obrázek
-
-            let galleryHtml = p.gallery.map(img => `<img src="${img}" class="gallery-img" alt="Detail" onclick="openModal('${img}')">`).join('');
-
-            card.innerHTML = `
-                <div class="property-basic" onclick="toggleDetail(this)">
-                    <img src="${p.image}" class="property-img-small" onclick="event.stopPropagation(); openModal('${p.image}')">
-                    <div class="property-info-basic">
-                        <h3 class="property-title">${p.title}</h3>
-                        <div class="property-price">${p.price}</div>
-                    </div>
-                    <span>▼</span>
-                </div>
-                <div class="property-details">
-                    <div class="detail-grid">
-                        <div><span class="detail-label">Typ</span>${p.type}</div>
-                        <div><span class="detail-label">Plocha</span>${p.size}</div>
-                        <div><span class="detail-label">Pokoje</span>${p.rooms}</div>
-                        <div><span class="detail-label">Garáž</span>${p.garage}</div>
-                        <div class="detail-note">
-                            <span class="detail-label">Poznámka makléře</span>
-                            ${p.note}
-                        </div>
-                    </div>
-
-                    <div class="detail-label">Další fotografie</div>
-                    <div class="property-gallery">
-                        ${galleryHtml}
-                    </div>
-
-                    <div class="map-placeholder">[ Mapa: ${p.location} ]</div>
-                </div>
-            `;
-            container.appendChild(card);
-        });
-    }
-
-    function toggleDetail(element) {
-        element.parentElement.classList.toggle('active');
-    }
-
-    // FUNKCE PRO MODÁLNÍ OKNO (LIGHTBOX)
-    function openModal(imageSrc) {
-        const modal = document.getElementById('image-modal');
-        const modalImage = document.getElementById('modal-image');
-        modal.style.display = "block";
-        modalImage.src = imageSrc;
-    }
-
-    function closeModal() {
-        const modal = document.getElementById('image-modal');
-        modal.style.display = "none";
-    }
-
-    // Zavřít modální okno kliknutím mimo obrázek
-    window.onclick = function(event) {
-        const modal = document.getElementById('image-modal');
-        if (event.target == modal) {
-            modal.style.display = "none";
-        }
-    }
-
-    document.addEventListener('DOMContentLoaded', renderProperties);
-</script>
+    <div id="image-modal" class="modal" onclick="closeModal()">
+        <span class="close-modal">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
 
     <footer>
         <p>&copy; 2026 Red County Reality. Všechna práva vyhrazena.</p>
     </footer>
 
+    <script>
+        const propertiesData = [
+            {
+                title: "Karavan v osadě mezi Montgomery a Blueberry",
+                price: "500 000 Kč",
+                type: "Karavan",
+                size: "25 m²",
+                rooms: "2+kk",
+                garage: "Místo před karavanem na 1 auto",
+                note: "Ideální místo pro levné bydlení v srdci Red County",
+                image: "Karavan interiér.png",
+                gallery: [
+                    "Karavan interiér.png",
+                    "https://via.placeholder.com/400x300?text=Interier",
+                    "https://via.placeholder.com/400x300?text=Zahrada"
+                ],
+                location: "North Rock, Red County"
+            },
+            {
+                title: "Tradiční statek v Blueberry",
+                price: "5 400 000 Kč",
+                type: "Venkovské stavení",
+                size: "350 m²",
+                rooms: "5+1",
+                garage: "Ne (velká stodola)",
+                note: "Historický statek s uzavřeným dvorem. Nutná částečná rekonstrukce interiéru.",
+                image: "https://via.placeholder.com/400x300?text=Statek+Blueberry",
+                gallery: [
+                    "https://via.placeholder.com/400x300?text=Dvur",
+                    "https://via.placeholder.com/400x300?text=Svetnice",
+                    "https://via.placeholder.com/400x300?text=Puda"
+                ],
+                location: "Blueberry, Red County"
+            }
+        ];
+
+        function renderProperties() {
+            const container = document.getElementById('property-list');
+            
+            propertiesData.forEach(p => {
+                const card = document.createElement('div');
+                card.className = 'property-card';
+
+                let galleryHtml = p.gallery.map(img => 
+                    `<img src="${img}" class="gallery-img" alt="Detail" onclick="event.stopPropagation(); openModal('${img}')">`
+                ).join('');
+
+                card.innerHTML = `
+                    <div class="property-basic" onclick="toggleDetail(this)">
+                        <img src="${p.image}" class="property-img-small" onclick="event.stopPropagation(); openModal('${p.image}')">
+                        <div class="property-info-basic">
+                            <h3 class="property-title">${p.title}</h3>
+                            <div class="property-price">${p.price}</div>
+                        </div>
+                        <span>▼</span>
+                    </div>
+                    <div class="property-details">
+                        <div class="detail-grid">
+                            <div><span class="detail-label">Typ</span>${p.type}</div>
+                            <div><span class="detail-label">Plocha</span>${p.size}</div>
+                            <div><span class="detail-label">Pokoje</span>${p.rooms}</div>
+                            <div><span class="detail-label">Garáž</span>${p.garage}</div>
+                            <div class="detail-note">
+                                <span class="detail-label">Poznámka makléře</span>
+                                ${p.note}
+                            </div>
+                        </div>
+                        <div class="detail-label">Další fotografie</div>
+                        <div class="property-gallery">
+                            ${galleryHtml}
+                        </div>
+                        <div class="map-placeholder">[ Mapa: ${p.location} ]</div>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function toggleDetail(element) {
+            element.parentElement.classList.toggle('active');
+        }
+
+        // FUNKCE LIGHTBOXU
+        function openModal(imgSrc) {
+            const modal = document.getElementById('image-modal');
+            const modalImg = document.getElementById('modal-img');
+            modal.style.display = "block";
+            modalImg.src = imgSrc;
+        }
+
+        function closeModal() {
+            document.getElementById('image-modal').style.display = "none";
+        }
+
+        document.addEventListener('DOMContentLoaded', renderProperties);
+    </script>
 </body>
 </html>
