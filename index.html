@@ -218,7 +218,34 @@
         <div class="form-container" style="text-align: center;">
             <p>Zvažujete prodej nemovitosti? Klikněte na tlačítko níže, vyplňte potřebné informace, případně nahrajte fotografie vaší nemovitosti a my se vám co nejdříve ozveme. Další možností je nás přímo kontaktovat na robert.watkins@post.ic nebo telefonicky na 326353! S RC Reality se nemovitosti nemusíte složitě shánět kupce, po kontaktování Vaši nemovitost ihned odkoupíme a vy už dále nic nemusíte řešit!</p>
             <br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfa_aF3TPBraK213iVgPTehB_Qw2G5DsGIKg3SXZJWKNQlaYQ/viewform" target="_blank" class="submit-btn" style="text-decoration: none; display: inline-block;">Přejít na formulář pro odeslání</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfa_aF3TPBraK213iVgPTehB_Qw2G5DsGIKg3SXZJWKNQlaYQ/viewform" target="_blank" class=".submit-btn {
+            background: linear-gradient(135deg, var(--primary-red), #a03530); /* Jemný barevný přechod */
+            color: white;
+            padding: 15px 30px; /* Trochu větší a vzdušnější */
+            border: none;
+            border-radius: 8px; /* Zaoblenější rohy, aby ladily s kartami nemovitostí */
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase; /* Větší důraz */
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease; /* Plynulá animace všech změn */
+            box-shadow: 0 4px 10px rgba(133, 42, 38, 0.3); /* Zabarvený stín dodá hloubku */
+            margin-top: 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, var(--primary-green), #4a8242); /* Změní se na zelenou */
+            transform: translateY(-3px); /* Tlačítko se při najetí lehce nadzvedne */
+            box-shadow: 0 8px 15px rgba(61, 106, 54, 0.4); /* Stín se zvětší */
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px); /* Fyzický efekt zmáčknutí při kliku */
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }" style="text-decoration: none; display: inline-block;">Přejít na formulář pro odeslání</a>
         </div>
     </section>
 
