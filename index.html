@@ -55,13 +55,12 @@
         border: 1px solid #e0ddd5;
         border-radius: 8px;
         overflow: hidden;
-        cursor: pointer;
+        /* cursor: pointer; */ /* Odstraněno, aby se zabránilo konfliktu s kliknutím na obrázek */
         transition: all 0.3s ease;
     }
 
     .property-card:hover {
         border-color: var(--primary-green);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
     }
 
     .property-basic {
@@ -69,6 +68,7 @@
         align-items: center;
         padding: 15px;
         gap: 20px;
+        cursor: pointer; /* Přidáno, aby se detail rozbalil jen po kliknutí na základní informace */
     }
 
     .property-img-small {
@@ -76,6 +76,7 @@
         height: 80px;
         object-fit: cover;
         border-radius: 4px;
+        cursor: pointer; /* Ukazatel pro kliknutí k zvětšení */
     }
 
     .property-info-basic {
@@ -104,10 +105,9 @@
         display: block;
     }
 
-    /* Mřížka rozdělena na 3 sloupce */
     .detail-grid {
         display: grid;
-        grid-template-columns: repeat(3, 1fr);
+        grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
         gap: 15px;
         margin: 15px 0;
         background: #fdfcf9;
@@ -116,26 +116,21 @@
         border: 1px solid #eee;
     }
 
-    .detail-item {
-        display: flex;
-        flex-direction: column;
-    }
-
     .detail-label {
         font-weight: bold;
         color: #777;
         font-size: 0.8rem;
         text-transform: uppercase;
-        margin-bottom: 3px;
+        display: block;
     }
 
-    /* Poznámka zabírající 2 sloupce vedle garáže */
+    /* Poznámka integrovaná do gridu */
     .detail-note {
-        grid-column: span 2; 
-        border-left: 2px solid #e0ddd5;
-        padding-left: 15px;
+        grid-column: 1 / -1; /* Zaručí roztažení přes celou šířku boxu */
+        margin-top: 10px;
+        padding-top: 10px;
+        border-top: 1px solid #e0ddd5;
         font-style: italic;
-        color: #555;
     }
 
     /* Galerie fotek */
@@ -154,6 +149,7 @@
         border-radius: 4px;
         flex-shrink: 0;
         border: 1px solid #eee;
+        cursor: pointer; /* Ukazatel pro kliknutí k zvětšení */
     }
 
     .map-placeholder {
@@ -167,19 +163,50 @@
         color: #777;
     }
 
-    /* Responzivita pro mobilní zařízení */
-    @media (max-width: 768px) {
-        .detail-grid {
-            grid-template-columns: 1fr;
-        }
-        .detail-note {
-            grid-column: span 1;
-            border-left: none;
-            border-top: 2px solid #e0ddd5;
-            padding-left: 0;
-            padding-top: 10px;
-            margin-top: 5px;
-        }
+    /* STYLY PRO MODÁLNÍ OKNO (LIGHTBOX) */
+    .modal {
+        display: none; /* Skryté ve výchozím nastavení */
+        position: fixed;
+        z-index: 1000; /* Zobrazeno nad vším ostatním */
+        padding-top: 100px;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 100%;
+        overflow: auto; /* Povolit posun, pokud je obrázek příliš velký */
+        background-color: rgba(0,0,0,0.8); /* Černé pozadí s průhledností */
+    }
+
+    .modal-content {
+        margin: auto;
+        display: block;
+        width: 80%;
+        max-width: 900px;
+        animation-name: zoom;
+        animation-duration: 0.4s;
+    }
+
+    @keyframes zoom {
+        from {transform:scale(0)} 
+        to {transform:scale(1)}
+    }
+
+    .close {
+        position: absolute;
+        top: 15px;
+        right: 35px;
+        color: #fff;
+        font-size: 40px;
+        font-weight: bold;
+        transition: 0.3s;
+        cursor: pointer;
+    }
+
+    .close:hover,
+    .close:focus {
+        color: #bbb;
+        text-decoration: none;
+        cursor: pointer;
     }
 </style>
 
@@ -219,33 +246,32 @@
         }
     ];
 
-    function renderProperties() {
+function renderProperties() {
         const container = document.getElementById('property-list');
         
         propertiesData.forEach(p => {
             const card = document.createElement('div');
             card.className = 'property-card';
-            card.onclick = function() { this.classList.toggle('active'); };
+            // card.onclick = function() { this.classList.toggle('active'); }; // Odstraněno, aby se detail nerozbalil po kliknutí na obrázek
 
-            let galleryHtml = p.gallery.map(img => `<img src="${img}" class="gallery-img" alt="Detail">`).join('');
+            let galleryHtml = p.gallery.map(img => `<img src="${img}" class="gallery-img" alt="Detail" onclick="openModal('${img}')">`).join('');
 
             card.innerHTML = `
-                <div class="property-basic">
-                    <img src="${p.image}" class="property-img-small">
+                <div class="property-basic" onclick="toggleDetail(this)">
+                    <img src="${p.image}" class="property-img-small" onclick="event.stopPropagation(); openModal('${p.image}')">
                     <div class="property-info-basic">
                         <h3 class="property-title">${p.title}</h3>
                         <div class="property-price">${p.price}</div>
                     </div>
-                    <span style="color: #ccc; font-size: 1.2rem;">▼</span>
+                    <span>▼</span>
                 </div>
                 <div class="property-details">
                     <div class="detail-grid">
-                        <div class="detail-item"><span class="detail-label">Typ</span>${p.type}</div>
-                        <div class="detail-item"><span class="detail-label">Plocha</span>${p.size}</div>
-                        <div class="detail-item"><span class="detail-label">Pokoje</span>${p.rooms}</div>
-                        
-                        <div class="detail-item"><span class="detail-label">Garáž</span>${p.garage}</div>
-                        <div class="detail-item detail-note">
+                        <div><span class="detail-label">Typ</span>${p.type}</div>
+                        <div><span class="detail-label">Plocha</span>${p.size}</div>
+                        <div><span class="detail-label">Pokoje</span>${p.rooms}</div>
+                        <div><span class="detail-label">Garáž</span>${p.garage}</div>
+                        <div class="detail-note">
                             <span class="detail-label">Poznámka makléře</span>
                             ${p.note}
                         </div>
@@ -256,11 +282,36 @@
                         ${galleryHtml}
                     </div>
 
-                    <div class="map-placeholder">[ Mapa oblasti: ${p.location} ]</div>
+                    <div class="map-placeholder">[ Mapa: ${p.location} ]</div>
                 </div>
             `;
             container.appendChild(card);
         });
+    }
+
+    function toggleDetail(element) {
+        element.parentElement.classList.toggle('active');
+    }
+
+    // FUNKCE PRO MODÁLNÍ OKNO (LIGHTBOX)
+    function openModal(imageSrc) {
+        const modal = document.getElementById('image-modal');
+        const modalImage = document.getElementById('modal-image');
+        modal.style.display = "block";
+        modalImage.src = imageSrc;
+    }
+
+    function closeModal() {
+        const modal = document.getElementById('image-modal');
+        modal.style.display = "none";
+    }
+
+    // Zavřít modální okno kliknutím mimo obrázek
+    window.onclick = function(event) {
+        const modal = document.getElementById('image-modal');
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
     }
 
     document.addEventListener('DOMContentLoaded', renderProperties);
