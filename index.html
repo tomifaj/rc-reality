@@ -176,6 +176,36 @@
             cursor: pointer;
         }
 
+        /* STYLY PRO TLAČÍTKO ODESLÁNÍ */
+        .submit-btn {
+            background: linear-gradient(135deg, var(--primary-red), #a03530);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 10px rgba(133, 42, 38, 0.3);
+            margin-top: 15px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .submit-btn:hover {
+            background: linear-gradient(135deg, var(--primary-green), #4a8242);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(61, 106, 54, 0.4);
+        }
+
+        .submit-btn:active {
+            transform: translateY(1px);
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+
         footer { text-align: center; padding: 20px; background: #eee; margin-top: 40px; }
     </style>
 </head>
@@ -218,7 +248,7 @@
         <div class="form-container" style="text-align: center;">
             <p>Zvažujete prodej nemovitosti? Klikněte na tlačítko níže, vyplňte potřebné informace, případně nahrajte fotografie vaší nemovitosti a my se vám co nejdříve ozveme. Další možností je nás přímo kontaktovat na robert.watkins@post.ic nebo telefonicky na 326353! S RC Reality se nemovitosti nemusíte složitě shánět kupce, po kontaktování Vaši nemovitost ihned odkoupíme a vy už dále nic nemusíte řešit!</p>
             <br>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfa_aF3TPBraK213iVgPTehB_Qw2G5DsGIKg3SXZJWKNQlaYQ/viewform" target="_blank" class=".submit-btn" style="text-decoration: none; display: inline-block;">Přejít na formulář pro odeslání</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSfa_aF3TPBraK213iVgPTehB_Qw2G5DsGIKg3SXZJWKNQlaYQ/viewform" target="_blank" class="submit-btn">Přejít na formulář pro odeslání</a>
         </div>
     </section>
 
@@ -248,79 +278,4 @@
                 title: "Tradiční statek v Blueberry",
                 price: "5 400 000 Kč",
                 type: "Venkovské stavení",
-                size: "350 m²",
-                rooms: "5+1",
-                garage: "Ne (velká stodola)",
-                note: "Historický statek s uzavřeným dvorem. Nutná částečná rekonstrukce interiéru.",
-                image: "https://via.placeholder.com/400x300?text=Statek+Blueberry",
-                gallery: [
-                    "https://via.placeholder.com/400x300?text=Dvur",
-                    "https://via.placeholder.com/400x300?text=Svetnice",
-                    "https://via.placeholder.com/400x300?text=Puda"
-                ],
-                location: "Blueberry, Red County"
-            }
-        ];
-
-        function renderProperties() {
-            const container = document.getElementById('property-list');
-            
-            propertiesData.forEach(p => {
-                const card = document.createElement('div');
-                card.className = 'property-card';
-
-                let galleryHtml = p.gallery.map(img => 
-                    `<img src="${img}" class="gallery-img" alt="Detail" onclick="event.stopPropagation(); openModal('${img}')">`
-                ).join('');
-
-                card.innerHTML = `
-                    <div class="property-basic" onclick="toggleDetail(this)">
-                        <img src="${p.image}" class="property-img-small" onclick="event.stopPropagation(); openModal('${p.image}')">
-                        <div class="property-info-basic">
-                            <h3 class="property-title">${p.title}</h3>
-                            <div class="property-price">${p.price}</div>
-                        </div>
-                        <span>▼</span>
-                    </div>
-                    <div class="property-details">
-                        <div class="detail-grid">
-                            <div><span class="detail-label">Typ</span>${p.type}</div>
-                            <div><span class="detail-label">Plocha</span>${p.size}</div>
-                            <div><span class="detail-label">Pokoje</span>${p.rooms}</div>
-                            <div><span class="detail-label">Garáž</span>${p.garage}</div>
-                            <div class="detail-note">
-                                <span class="detail-label">Poznámka makléře</span>
-                                ${p.note}
-                            </div>
-                        </div>
-                        <div class="detail-label">Další fotografie</div>
-                        <div class="property-gallery">
-                            ${galleryHtml}
-                        </div>
-                        <div class="map-placeholder">[ Mapa: ${p.location} ]</div>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
-
-        function toggleDetail(element) {
-            element.parentElement.classList.toggle('active');
-        }
-
-        // FUNKCE LIGHTBOXU
-        function openModal(imgSrc) {
-            const modal = document.getElementById('image-modal');
-            const modalImg = document.getElementById('modal-img');
-            modal.style.display = "block";
-            modalImg.src = imgSrc;
-        }
-
-        function closeModal() {
-            document.getElementById('image-modal').style.display = "none";
-        }
-
-        document.addEventListener('DOMContentLoaded', renderProperties);
-    </script>
-</body>
-</html>
+                size: "350
