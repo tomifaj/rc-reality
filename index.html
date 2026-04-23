@@ -31,9 +31,8 @@
         </div>
 
         
-<section id="nabidka" class="section">
-    <div class="container">
-            <h2 class="section-title">Aktuální nabídka</h2>
+<section id="nabidka" class="container">
+    <h2>Aktuální nabídka</h2>
     <div id="property-list" class="property-list">
         </div>
 </section>
@@ -171,7 +170,7 @@
     /* Responzivita pro mobilní zařízení */
     @media (max-width: 768px) {
         .detail-grid {
-            grid-template-columns: 1fr; /* Na mobilu vše pod sebou */
+            grid-template-columns: 1fr;
         }
         .detail-note {
             grid-column: span 1;
@@ -194,226 +193,29 @@
             rooms: "8+2",
             garage: "Ano (4 vozy)",
             note: "Tato nemovitost je ideální pro chov koní. Součástí prodeje je i přilehlý pastvinový pozemek o rozloze 2 hektary. Dům prošel částečnou rekonstrukcí střechy.",
-            image: "https://via.placeholder.com/400x300?text=Hlavni+Foto",
+            image: "https://via.placeholder.com/400x300?text=Ranc+Redwood",
             gallery: [
                 "https://via.placeholder.com/400x300?text=Staje",
                 "https://via.placeholder.com/400x300?text=Interier",
                 "https://via.placeholder.com/400x300?text=Zahrada"
             ],
             location: "North Rock, Red County"
-        }
-    ];
-
-    function renderProperties() {
-        const container = document.getElementById('property-list');
-        
-        propertiesData.forEach(p => {
-            const card = document.createElement('div');
-            card.className = 'property-card';
-            card.onclick = function() { this.classList.toggle('active'); };
-
-            let galleryHtml = p.gallery.map(img => `<img src="${img}" class="gallery-img" alt="Detail">`).join('');
-
-            card.innerHTML = `
-                <div class="property-basic">
-                    <img src="${p.image}" class="property-img-small">
-                    <div class="property-info-basic">
-                        <h3 class="property-title">${p.title}</h3>
-                        <div class="property-price">${p.price}</div>
-                    </div>
-                    <span style="color: #ccc; font-size: 1.2rem;">▼</span>
-                </div>
-                <div class="property-details">
-                    <div class="detail-grid">
-                        <div class="detail-item"><span class="detail-label">Typ</span>${p.type}</div>
-                        <div class="detail-item"><span class="detail-label">Plocha</span>${p.size}</div>
-                        <div class="detail-item"><span class="detail-label">Pokoje</span>${p.rooms}</div>
-                        
-                        <div class="detail-item"><span class="detail-label">Garáž</span>${p.garage}</div>
-                        <div class="detail-item detail-note">
-                            <span class="detail-label">Poznámka makléře</span>
-                            ${p.note}
-                        </div>
-                    </div>
-
-                    <div class="detail-label">Další fotografie</div>
-                    <div class="property-gallery">
-                        ${galleryHtml}
-                    </div>
-
-                    <div class="map-placeholder">[ Mapa oblasti: ${p.location} ]</div>
-                </div>
-            `;
-            container.appendChild(card);
-        });
-    }
-
-    document.addEventListener('DOMContentLoaded', renderProperties);
-</script>
-
-<style>
-    :root {
-        --primary-red: #852a26;
-        --primary-green: #3d6a36;
-    }
-
-    .property-list {
-        display: flex;
-        flex-direction: column;
-        gap: 20px;
-        width: 100%;
-    }
-
-    .property-card {
-        background: #fff;
-        border: 1px solid #e0ddd5;
-        border-radius: 8px;
-        overflow: hidden;
-        cursor: pointer;
-        transition: all 0.3s ease;
-    }
-
-    .property-card:hover {
-        border-color: var(--primary-green);
-        box-shadow: 0 4px 12px rgba(0,0,0,0.05);
-    }
-
-    .property-basic {
-        display: flex;
-        align-items: center;
-        padding: 15px;
-        gap: 20px;
-    }
-
-    .property-img-small {
-        width: 120px;
-        height: 80px;
-        object-fit: cover;
-        border-radius: 4px;
-    }
-
-    .property-info-basic {
-        flex-grow: 1;
-    }
-
-    .property-title {
-        color: var(--primary-red);
-        font-size: 1.2rem;
-        margin: 0;
-    }
-
-    .property-price {
-        color: var(--primary-green);
-        font-weight: bold;
-    }
-
-    /* ROZBALENÝ DETAIL */
-    .property-details {
-        display: none;
-        padding: 0 20px 20px 20px;
-        border-top: 1px dashed #ccc;
-    }
-
-    .property-card.active .property-details {
-        display: block;
-    }
-
-    /* Mřížka rozdělena na 3 sloupce */
-    .detail-grid {
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        gap: 15px;
-        margin: 15px 0;
-        background: #fdfcf9;
-        padding: 15px;
-        border-radius: 6px;
-        border: 1px solid #eee;
-    }
-
-    .detail-item {
-        display: flex;
-        flex-direction: column;
-    }
-
-    .detail-label {
-        font-weight: bold;
-        color: #777;
-        font-size: 0.8rem;
-        text-transform: uppercase;
-        margin-bottom: 3px;
-    }
-
-    /* Poznámka zabírající 2 sloupce vedle garáže */
-    .detail-note {
-        grid-column: span 2; 
-        border-left: 2px solid #e0ddd5;
-        padding-left: 15px;
-        font-style: italic;
-        color: #555;
-    }
-
-    /* Galerie fotek */
-    .property-gallery {
-        display: flex;
-        gap: 10px;
-        overflow-x: auto;
-        padding: 10px 0;
-        margin-bottom: 15px;
-    }
-
-    .gallery-img {
-        width: 150px;
-        height: 100px;
-        object-fit: cover;
-        border-radius: 4px;
-        flex-shrink: 0;
-        border: 1px solid #eee;
-    }
-
-    .map-placeholder {
-        width: 100%;
-        height: 150px;
-        background-color: #e5e3df;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        border-radius: 6px;
-        color: #777;
-    }
-
-    /* Responzivita pro mobilní zařízení */
-    @media (max-width: 768px) {
-        .detail-grid {
-            grid-template-columns: 1fr; /* Na mobilu vše pod sebou */
-        }
-        .detail-note {
-            grid-column: span 1;
-            border-left: none;
-            border-top: 2px solid #e0ddd5;
-            padding-left: 0;
-            padding-top: 10px;
-            margin-top: 5px;
-        }
-    }
-</style>
-
-<script>
-    const propertiesData = [
+        },
         {
-            title: "Ranč 'Redwood' se stájemi",
-            price: "8 900 000 Kč",
-            type: "Zemědělská usedlost",
-            size: "1200 m²",
-            rooms: "8+2",
-            garage: "Ano (4 vozy)",
-            note: "Tato nemovitost je ideální pro chov koní. Součástí prodeje je i přilehlý pastvinový pozemek o rozloze 2 hektary. Dům prošel částečnou rekonstrukcí střechy.",
-            image: "https://via.placeholder.com/400x300?text=Hlavni+Foto",
+            title: "Tradiční statek v Blueberry",
+            price: "5 400 000 Kč",
+            type: "Venkovské stavení",
+            size: "350 m²",
+            rooms: "5+1",
+            garage: "Ne (velká stodola)",
+            note: "Historický statek s uzavřeným dvorem. Nutná částečná rekonstrukce interiéru. Výborná dostupnost do centra obce a klidné okolí.",
+            image: "https://via.placeholder.com/400x300?text=Statek+Blueberry",
             gallery: [
-                "https://via.placeholder.com/400x300?text=Staje",
-                "https://via.placeholder.com/400x300?text=Interier",
-                "https://via.placeholder.com/400x300?text=Zahrada"
+                "https://via.placeholder.com/400x300?text=Dvur",
+                "https://via.placeholder.com/400x300?text=Svetnice",
+                "https://via.placeholder.com/400x300?text=Puda"
             ],
-            location: "North Rock, Red County"
+            location: "Blueberry, Red County"
         }
     ];
 
