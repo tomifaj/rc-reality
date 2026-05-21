@@ -40,7 +40,8 @@
         .detail-note { grid-column: 1 / -1; margin-top: 10px; padding-top: 10px; border-top: 1px solid #e0ddd5; font-style: italic; color: #555; }
         .property-gallery { display: flex; gap: 10px; overflow-x: auto; padding: 10px 0; margin-bottom: 15px; }
         .gallery-img { width: 150px; height: 100px; object-fit: cover; border-radius: 4px; flex-shrink: 0; border: 1px solid #eee; cursor: zoom-in; }
-        .map-placeholder { width: 100%; height: 150px; background-color: #e5e3df; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #777; font-style: italic; }
+        /* Upravený map-placeholder pro zobrazení obrázku */
+        .map-placeholder { width: 100%; height: 200px; background-color: #e5e3df; display: flex; align-items: center; justify-content: center; border-radius: 6px; color: #777; font-style: italic; padding: 0; border: none; }
         
         .modal { display: none; position: fixed; z-index: 1000; padding-top: 80px; left: 0; top: 0; width: 100%; height: 100%; background-color: rgba(0,0,0,0.9); overflow: auto; }
         .modal-content { margin: auto; display: block; width: 90%; max-width: 900px; border-radius: 4px; animation: zoom 0.3s; }
@@ -154,7 +155,8 @@
                     "KarBBM -PC.png",
                     "KarBBM-venku.png"
                 ],
-                location: "Mapa KarBBM.png"
+                location: "Osada mezi Montgomery a Blueberry",
+                mapImage: "Mapa KarBBM.png" // Přidán parametr pro mapu
             },
             {
                 title: "Tradiční statek v Blueberry",
@@ -170,7 +172,8 @@
                     "https://via.placeholder.com/400x300?text=Svetnice",
                     "https://via.placeholder.com/400x300?text=Puda"
                 ],
-                location: "Blueberry, Red County"
+                location: "Blueberry, Red County",
+                mapImage: "https://via.placeholder.com/800x400?text=Mapa+Blueberry" // Přidán parametr pro mapu
             }
         ];
 
@@ -210,7 +213,9 @@
                         <div class="property-gallery">
                             ${galleryHtml}
                         </div>
-                        <div class="map-placeholder">[ Mapa: ${p.location} ]</div>
+                        <div class="map-placeholder">
+                            <img src="${p.mapImage}" style="width: 100%; height: 100%; object-fit: cover; border-radius: 6px; cursor: zoom-in;" alt="Mapa lokality" onclick="openModal(event, '${p.mapImage}')">
+                        </div>
                     </div>
                 `;
                 container.appendChild(card);
