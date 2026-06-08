@@ -99,14 +99,35 @@
             transform: translateY(-2px);
         }
 
-       
-
         .section { padding: 50px 20px; max-width: 1000px; margin: 0 auto; }
         .section-title { color: #3d6a36; border-bottom: 2px solid #852a26; display: inline-block; margin-bottom: 25px; padding-bottom: 5px; }
 
         :root {
             --primary-red: #852a26;
             --primary-green: #3d6a36;
+        }
+
+        /* --- STYLY PRO GALERII O NÁS --- */
+        .about-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 30px;
+        }
+        .about-gallery img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #e0ddd5;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+            cursor: zoom-in;
+            transition: all 0.3s ease;
+        }
+        .about-gallery img:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-color: var(--primary-green);
         }
 
         .property-list { display: flex; flex-direction: column; gap: 20px; width: 100%; margin-top: 20px; }
@@ -169,7 +190,7 @@
         <nav class="main-nav">
             <ul>
                 <li><a href="#domu">Domů</a></li>
-                <li><a href="#domu">Akce</a></li>
+                <li><a href="#Akce">Akce</a></li>
                 <li><a href="#o-nas">O nás</a></li>
                 <li><a href="#nabidka" class="active">Nabídka nemovitostí</a></li>
                 <li><a href="#pronajem">Pronájem nemovitostí</a></li>
@@ -183,9 +204,17 @@
             <h2 class="section-title">Akce</h2>
             <p>Tato realitní kancelář (včetně webu) je zatím stále v přípravách. Prodej, pronájem ani výkup tak zatím není možný. Sledujte naše stránky, aby jste se včas dozvěděli o našem otevření!</p>
         </section>
+        
         <section id="o-nas" class="section">
             <h2 class="section-title">O nás</h2>
             <p>Naše realitní kancelář se Vám nabídne pomoc při výběru nebo prodeji realit v celém Red County a okolí. Založena Robertem Watkinsem. Sídlíme v srdci Montgomery, kancelářská budova č.2 vedle Underground fight clubu. Jsme v kanceláři č.3 v posledním patře, nemůžete to minout! Přijďte k nám nebo nás kontaktujte níže!</p>
+            
+            <div class="about-gallery">
+                <img src="Screenshot 2026-05-31 084029.jpg" alt="Budova zvenku" onclick="openModal(event, 'Screenshot 2026-05-31 084029.jpg')">
+                <img src="Screenshot 2026-05-31 084107.jpg" alt="Dveře kanceláře" onclick="openModal(event, 'Screenshot 2026-05-31 084107.jpg')">
+                <img src="Kancelar_foto3.jpg" alt="Interiér kanceláře 1" onclick="openModal(event, 'Kancelar_foto3.jpg')">
+                <img src="Kancelar_foto4.jpg" alt="Interiér kanceláře 2" onclick="openModal(event, 'Kancelar_foto4.jpg')">
+            </div>
         </section>
 
         <section id="nabidka" class="section">
