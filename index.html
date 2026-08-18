@@ -126,7 +126,7 @@
         }
 
         .action-banner h3 {
-            color: #ffda44;
+            color: #ffda44; /* Zlatavá barva z letáku */
             font-size: 2rem;
             font-weight: 900;
             text-transform: uppercase;
@@ -290,20 +290,10 @@
             <h2 class="section-title">Akce</h2>
             
             <div class="action-banner">
-                <h3>🚗 RC Reality na AmeriCars Festivalu! 🚗</h3>
                 
-                <p class="action-prizes">
-                    Zastavte se u našeho stánku, dejte nám <strong>SLEDOVÁNÍ na IRIS</strong><br>
-                    a rovnou si zahrajte o hodnotné ceny. <strong>Každý sledující vyhrává!</strong>
-                </p>
 
-                <div style="background: rgba(255, 255, 255, 0.1); border: 1px dashed rgba(255, 255, 255, 0.4); padding: 20px; border-radius: 8px; margin: 25px 0;">
-                    <span class="action-info-label" style="font-size: 1.2rem; display: block; margin-bottom: 10px;">Ve hře na vás čekají:</span>
-                    <span style="font-size: 1.1rem; font-weight: 600;">Legendary boxy a klíče • Fox boxy a klíče<br>Peněžité obnosy • Exkluzivní merchandise</span>
-                </div>
-Dále platí i akce:
                 <div class="action-highlight">
-                    Ke každému nákupu, prodeji či pronájmu dostanete FOX BOX ZDARMA!
+                    Ke každému nákupu, prodeji či pronájmu dostanete BOX ZDARMA!
                 </div>
             </div>
         </section>
@@ -368,31 +358,13 @@ Dále platí i akce:
     <script>
         const propertiesData = [
             {
-                title: "Karavan v osadě mezi Montgomery a Blueberry",
-                price: "500 000 Kč",
-                type: "Karavan",
-                size: "25 m²",
-                rooms: "2+kk",
-                garage: "Místo před karavanem na 1 auto",
-                note: "Ideální místo pro levné bydlení v srdci Red County",
-                image: "Karavan interiér.png",
-                gallery: [
-                    "Karavan interiér.png",
-                    "KarBBM-koupelna.png",
-                    "KarBBM -PC.png",
-                    "KarBBM-venku.png"
-                ],
-                location: "Osada mezi Montgomery a Blueberry",
-                mapImage: "Mapa KarBBM.png"
-            },
-            {
                 title: "Karavan ve Fort Carson",
                 price: "400 000 Kč",
                 type: "Karavan",
                 size: "25 m²",
                 rooms: "2+kk",
                 garage: "Místo před karavanem na 1 auto",
-                note: "Krásné bydlení nedaleko mnohých přírodních památek",
+                note: "Krásné bydlení nedaleko mnohých přírodních památek. Tato nemovitost není dostupná k pronájmu.",
                 image: "KarFortvenek.png",
                 gallery: [
                     "KarFortvenek.png",
@@ -423,9 +395,9 @@ Dále platí i akce:
                 price: "3 250 000 Kč",
                 type: "Dům s garáží",
                 size: "80 m²",
-                rooms: "2+kk",
+                rooms: "2+1",
                 garage: "Garáž pro 3 auta (2+zvedák)",
-                note: "Krásný renovovaný dům s garáží v srdci San Andreas",
+                note: "Krásný renovovaný dům s garáží v srdci San Andreas. Oba vchody zabezpečeny bezpečnostním zámkem.",
                 image: "DůmFortexteriér.png",
                 gallery: [
                     "DůmForložnice.png",
@@ -436,6 +408,133 @@ Dále platí i akce:
                 ],
                 location: "Fort Carson",
                 mapImage: "Mapa DůmFort.png"
+            },
+            {
+                title: "Stavební buňka v Blueberry",
+                price: "1 650 000 Kč",
+                type: "Stavební buňka",
+                size: "20 m²",
+                rooms: "1 místnost + chodba",
+                garage: "V okolí prostor na parkování",
+                note: "Prakticky lokalizovaná buňka využitelná jako sklad v přímé blízkosti kupce surovin",
+                image: "BunkaBBexterier.png",
+                gallery: [
+                    "BunkaBBexterier.png",
+                    "BunkaBBexterier2.png",
+                    "BunkaBBinterier.png",
+                    "BunkaBBinterier2.png"
+                ],
+                location: "Blueberry",
+                mapImage: "Mapa BunkaBB.png"
+            },
+            {
+                title: "Karavan ve Fort Carson",
+                price: "450 000 Kč",
+                type: "Karavan",
+                size: "25 m²",
+                rooms: "2+kk",
+                garage: "Místo před karavanem na 1 auto",
+                note: "Krásné bydlení nedaleko mnohých přírodních památek.",
+                image: "KarFort2venek.png",
+                gallery: [
+                    "KarFort2venek.png",
+                    "KarFort2int1.png",
+                    "KarFort2int2.png"
+                ],
+                location: "Fort Carson",
+                mapImage: "Mapa KarFort.png"
+            },
+            {
+                title: "Dům v Las Venturas",
+                price: "1 900 000 Kč",
+                type: "Dům",
+                size: "100 m²",
+                rooms: "3+1",
+                garage: "Před domem kryté parkování pro 2 auta",
+                note: "Krásný prostorný dům s novými podlahami v Las Venturas. Vchod zabezpečen bezpečnostním zámkem.",
+                image: "DůmLVexteriér.png",
+                gallery: [
+                    "DůmLVložnice1.png",
+                    "DůmLVložnice2.png",
+                    "DůmLVobývak.png",
+                    "DůmLVkuchyn.png",
+                    "DůmLVkoupelna.png",
+                    "DůmLVchodba.png"
+                ],
+                location: "Las Venturas",
+                mapImage: "Mapa DůmLV.png"
+            },
+            {
+                title: "Domek ve Fort Carson",
+                price: "1 000 000 Kč",
+                type: "Dům",
+                size: "90 m²",
+                rooms: "3+1",
+                garage: "V okolí prostor na parkování",
+                note: "Útulný vzdušný dům s novými podlahami ve Fort Carson.",
+                image: "DomekFortexteriér.png",
+                gallery: [
+                    "DomekFortložnice1.png",
+                    "DomekFortložnice2.png",
+                    "DomekFortobývak.png",
+                    "DomekFortkuchyn.png",
+                    "DomekFortchodba.png"
+                ],
+                location: "Fort Carson",
+                mapImage: "Mapa DomekFort.png"
+            },
+            {
+                title: "Chatka ve Fort Carson",
+                price: "650 000 Kč",
+                type: "Chatka",
+                size: "35 m²",
+                rooms: "2+kk",
+                garage: "V okolí prostor na parkování",
+                note: "Útulná moderně vybavená chatka ve Fort Carson. Tato nemovitost není dostupná k pronájmu.",
+                image: "ChatkaFortexteriér.png",
+                gallery: [
+                    "ChatkaFortložnice1.png",
+                    "ChatkaFortložnice2.png",
+                    "ChatkaFortobývak.png",
+                    "ChatkaFortkoupelna.png"
+                ],
+                location: "Fort Carson",
+                mapImage: "Mapa ChatkaFort.png"
+            },
+            {
+                title: "Dům s garáží v Los Santos",
+                price: "2 250 000 Kč",
+                type: "Dům s garáží",
+                size: "100 m²",
+                rooms: "3+1",
+                garage: "Garáž na 1 auto",
+                note: "Prostorný dům s garáží v lukrativní oblasti s výhledem na Los Santos",
+                image: "DůmLSexteriér.png",
+                gallery: [
+                    "DůmLSložnice1.png",
+                    "DůmLSchodba.png",
+                    "DůmLSobývak.png",
+                    "DůmLSkoupelna.png",
+                    "DůmLSgaráž.png"
+                ],
+                location: "Los Santos",
+                mapImage: "Mapa DůmLS.png"
+            },
+            {
+                title: "Skleník v Las Venturas",
+                price: "550 000 Kč",
+                type: "Skleník",
+                size: "15 m²",
+                rooms: "1",
+                garage: "V okolí skleníku prostor na parkování",
+                note: "Skleník přímo na kraji Las Venturas",
+                image: "SklLV2venek.png",
+                gallery: [
+                    "SklLV2venek.png",
+                    "SklLV2int.png",
+                ],
+                location: "Las Venturas",
+                mapImage: "Mapa SklLV.png"
             }
         ];
 
