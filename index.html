@@ -111,7 +111,7 @@
             --primary-green: #3d6a36;
         }
 
-        /* --- STYLY PRO SEKCI AKCE (INSPIROVÁNO LETÁKEM) --- */
+        /* --- STYLY PRO SEKCI AKCE (SKLENÍKOVÝ VÝPRODEJ) --- */
         .action-banner {
             background-color: #852a26;
             color: #ffffff;
@@ -133,6 +133,14 @@
             margin: 0 0 15px 0;
             letter-spacing: 1px;
             text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .action-banner h4 {
+            font-size: 1.5rem;
+            margin: 0 0 20px 0;
+            color: #ffffff;
+            font-weight: 900;
+            text-transform: uppercase;
         }
 
         .action-info-grid {
@@ -185,6 +193,7 @@
             font-size: 1.1rem;
             text-transform: uppercase;
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            margin-top: 15px;
         }
 
         /* --- STYLY PRO GALERII O NÁS --- */
@@ -217,7 +226,23 @@
         .property-img-small { width: 120px; height: 80px; object-fit: cover; border-radius: 4px; cursor: zoom-in; border: 1px solid #eee; }
         .property-info-basic { flex-grow: 1; }
         .property-title { color: var(--primary-red); font-size: 1.3rem; font-weight: bold; margin: 0 0 5px 0; }
+        
+        /* Nové styly pro ceny (přeškrtnutá a nová) */
+        .price-container { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
         .property-price { color: var(--primary-green); font-weight: bold; font-size: 1.1rem; }
+        .property-price.old-price { 
+            color: #888; 
+            text-decoration: line-through; 
+            text-decoration-color: var(--primary-red);
+            text-decoration-thickness: 2px;
+            font-size: 1rem;
+        }
+        .property-price.new-price {
+            color: var(--primary-red);
+            font-size: 1.2rem;
+            font-weight: 900;
+        }
+        
         .toggle-icon { color: #ccc; font-size: 1.2rem; transition: transform 0.3s ease; }
         .property-details { display: none; padding: 0 20px 20px 20px; border-top: 1px dashed #e0ddd5; animation: fadeIn 0.4s ease; }
         .property-card.active .property-details { display: block; }
@@ -290,7 +315,24 @@
             <h2 class="section-title">Akce</h2>
             
             <div class="action-banner">
+                <h3>🍂 Konec sezóny je tady! 🍂</h3>
+                <h4>Velký výprodej skleníků</h4>
                 
+                <p class="action-prizes" style="margin-bottom: 10px;">
+                    Pěstitelská sezóna se blíží ke konci, ale naše slevy teprve začínají!<br>
+                    <strong>Všechny skleníky jsou zlevněny o 15 až 20 %.</strong>
+                </p>
+
+                <div class="action-info-grid">
+                    <div class="action-info-item">
+                        <span class="action-info-label">Množstevní sleva</span>
+                        <span class="action-info-value">Každý další zakoupený skleník snižuje celkovou částku o dalších 50 000 Kč!</span>
+                    </div>
+                    <div class="action-info-item">
+                        <span class="action-info-label">Bez starostí</span>
+                        <span class="action-info-value">Všechno papírování nechte na nás. Skleníky jsou ihned k převzetí.</span>
+                    </div>
+                </div>
 
                 <div class="action-highlight">
                     Ke každému nákupu, prodeji či pronájmu dostanete BOX ZDARMA!
@@ -377,6 +419,7 @@
             {
                 title: "Skleník v Las Venturas",
                 price: "500 000 Kč",
+                newPrice: "400 000 Kč",
                 type: "Skleník",
                 size: "15 m²",
                 rooms: "1",
@@ -466,6 +509,7 @@
             {
                 title: "Skleník v Las Venturas",
                 price: "550 000 Kč",
+                newPrice: "440 000 Kč",
                 type: "Skleník",
                 size: "15 m²",
                 rooms: "1",
@@ -482,6 +526,7 @@
             {
                 title: "Skleník v Las Venturas",
                 price: "550 000 Kč",
+                newPrice: "440 000 Kč",
                 type: "Skleník",
                 size: "15 m²",
                 rooms: "1",
@@ -499,6 +544,7 @@
             {
                 title: "Skleník v Las Venturas",
                 price: "550 000 Kč",
+                newPrice: "440 000 Kč",
                 type: "Skleník",
                 size: "15 m²",
                 rooms: "1",
@@ -515,6 +561,7 @@
             {
                 title: "Skleník v Las Venturas",
                 price: "500 000 Kč",
+                newPrice: "400 000 Kč",
                 type: "Skleník",
                 size: "15 m²",
                 rooms: "1",
@@ -541,13 +588,25 @@
                 let galleryHtml = p.gallery.map(img => 
                     `<img src="${img}" class="gallery-img" alt="Detail" onclick="openModal(event, '${img}')">`
                 ).join('');
+                
+                let priceHtml = '';
+                if (p.newPrice) {
+                    priceHtml = `
+                        <div class="price-container">
+                            <span class="property-price old-price">${p.price}</span>
+                            <span class="property-price new-price">${p.newPrice}</span>
+                        </div>
+                    `;
+                } else {
+                    priceHtml = `<div class="property-price">${p.price}</div>`;
+                }
 
                 card.innerHTML = `
                     <div class="property-basic" onclick="toggleDetail(this)">
                         <img src="${p.image}" class="property-img-small" alt="Náhled" onclick="openModal(event, '${p.image}')">
                         <div class="property-info-basic">
                             <h3 class="property-title">${p.title}</h3>
-                            <div class="property-price">${p.price}</div>
+                            ${priceHtml}
                         </div>
                         <span class="toggle-icon">▼</span>
                     </div>
